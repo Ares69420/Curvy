@@ -78,14 +78,14 @@ export default function Home() {
     const animationId = setInterval(animateStars, 50);
     
     // Add click event listener to close cards when clicking outside
-    const handleClickOutside = (event) => {
-      if (profileCardRef.current && !profileCardRef.current.contains(event.target) && showProfile) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (profileCardRef.current && !profileCardRef.current.contains(event.target as Node) && showProfile) {
         setShowProfile(false);
       }
-      if (aiesecCardRef.current && !aiesecCardRef.current.contains(event.target) && showAiesec) {
+      if (aiesecCardRef.current && !aiesecCardRef.current.contains(event.target as Node) && showAiesec) {
         setShowAiesec(false);
       }
-      if (mvpCardRef.current && !mvpCardRef.current.contains(event.target) && showMvp) {
+      if (mvpCardRef.current && !mvpCardRef.current.contains(event.target as Node) && showMvp) {
         setShowMvp(false);
       }
     };
@@ -426,6 +426,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
