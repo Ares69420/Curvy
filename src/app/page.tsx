@@ -3,22 +3,28 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import dynamic from 'next/dynamic';
 
-// Prefetch the research page
-const prefetchResearch = () => {
-  const router = useRouter();
-  useEffect(() => {
-    router.prefetch('/research');
-  }, [router]);
-};
+// Define the star type
+interface Star {
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  speedX: number;
+  speedY: number;
+}
 
 export default function Home() {
   const router = useRouter();
-  prefetchResearch(); // Call the prefetch function
+  
+  // Prefetch the research page
+  useEffect(() => {
+    router.prefetch('/research');
+  }, [router]);
   
   const [activeImage, setActiveImage] = useState(0);
-  const [stars, setStars] = useState([]);
+  // Properly type the stars state
+  const [stars, setStars] = useState<Star[]>([]);
   const [showProfile, setShowProfile] = useState(false);
   const [showAiesec, setShowAiesec] = useState(false);
   const [showMvp, setShowMvp] = useState(false);
@@ -35,7 +41,7 @@ export default function Home() {
 
   useEffect(() => {
     // Generate initial stars
-    const initialStars = Array.from({ length: 100 }).map(() => ({
+    const initialStars: Star[] = Array.from({ length: 100 }).map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 1,
@@ -420,6 +426,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
