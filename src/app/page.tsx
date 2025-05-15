@@ -28,10 +28,10 @@ export default function Home() {
   const [showProfile, setShowProfile] = useState(false);
   const [showAiesec, setShowAiesec] = useState(false);
   const [showMvp, setShowMvp] = useState(false);
-  const profileCardRef = useRef(null);
-  const aiesecCardRef = useRef(null);
-  const mvpCardRef = useRef(null);
-  
+  const profileCardRef = useRef<HTMLDivElement | null>(null);  
+  const aiesecCardRef = useRef<HTMLDivElement | null>(null);  
+  const mvpCardRef = useRef<HTMLDivElement | null>(null);  
+
   const images = [
     { src: "/jesser.jpg", alt: "Profile picture" },
     { src: "/aiesec.jpg", alt: "AIESEC logo" },
@@ -98,7 +98,7 @@ export default function Home() {
     };
   }, [showProfile, showAiesec, showMvp]);
 
-  const handleImageClick = (index) => {
+  const handleImageClick = (index: any) => {
     setActiveImage(index);
     
     // Navigate to research page if the 4th image is clicked
